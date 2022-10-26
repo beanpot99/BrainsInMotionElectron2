@@ -1,0 +1,36 @@
+{
+  "name": "bim-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "webpack --config webpack.common.js --watch"
+  },
+  "author": "Grace Thompson",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "electron": "^10.1.1",
+    "electron-reload": "^1.5.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.2",
+    "nav-react": "^1.0.5",
+    "navbar-react": "^1.0.4",
+    "react": "^16.13.1",
+    "react-bootstrap-form": "^0.1.4-beta6",
+    "react-containers": "^16.0.5",
+    "react-dom": "^16.13.1",
+    "react-form": "^4.0.1",
+    "react-select": "^5.5.6",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}

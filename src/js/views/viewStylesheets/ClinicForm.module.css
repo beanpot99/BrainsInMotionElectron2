@@ -1,0 +1,86 @@
+.clinicHeader{
+    display:flex;
+    justify-content:center;
+}
+
+.sideBySideTables{
+    height: 50%;
+    width: 80%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    border-bottom: 1px solid #a9a9a9;
+    margin:auto;
+}
+
+.child{
+    padding:20px;
+    width:100%;
+}
+
+.sectionHeaders{
+    height: 25px;
+    width: 80%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    margin-top:10px;
+}
+
+.childSectionHeaders{
+    width:100%;
+    height:25px;
+    background-color:#BEBEBE; 
+}
+
+.child2{
+    padding:20px;
+    width:100%;
+}
+
+.sideBySideTables2{
+    height: 50%;
+    width: 80%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    margin:auto;
+}
+
+.evaluatorName{
+    display:flex-wrap;
+    align-items:flex-start;
+    justify-content:left;
+    width:100%;
+}
+
+.textArea{
+    resize:none;
+}
+
+.therapyGoals{
+    width: 100%;
+}
+
+.submitButton{
+    padding-right: 25px;
+    padding-top: 20px;
+}
+
+.resetButton{
+    padding-right: 25px;
+    padding-top: 20px;
+}
+
+.buttons{
+display: flex;
+margin-left:75%
+}
+
+.verticalTables{
+    width: 75%;
+    
+    justify-content:center;
+    margin: auto;
+}

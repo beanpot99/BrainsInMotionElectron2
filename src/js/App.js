@@ -13,6 +13,7 @@ import IndividualClinicForm from "./views/IndividualClinicForm";
 import IndividualEIForm from "./views/IndividualEIForm";
 import { HashRouter as Router, Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
+import classes from "./App.module.css";
 import Navbar from "./components/Navbar";
 export default function App(){
    
@@ -22,11 +23,12 @@ export default function App(){
        //<Home/> 
        //<EIForm/>
        //<MyForms/>
+       
         <Router>
         
         
         <Navbar/>
-        <div className='content-wrapper'>
+        <div className={`content-wrapper ${classes.pageBackground} `}>
         <Switch>
             <Route path="/EIForm">
             <EIForm/>
@@ -44,7 +46,7 @@ export default function App(){
             {/* <MyForms/> */}
             </Route>
             <Route path="/AllForms">
-            {/* <AllForms/> */}
+            <AllForms/>
             </Route>
             <Route path="/Login">
             <Login/>
@@ -58,6 +60,6 @@ export default function App(){
         </Switch>
         </div>
         </Router>
-      
+        
     )
 }

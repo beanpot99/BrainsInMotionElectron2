@@ -5,13 +5,16 @@ import Search from "../components/Search";
 import ClinicForms from "../components/shared/ClinicForms";
 import EIForms from "../components/shared/EIForms";
 import { useState } from "react";
-export default function AllForms({filteredClinic, filteredEI}){
+import classes from "./viewStylesheets/AllForms.module.css";
+export default function AllForms(){ 
+    // {filteredClinic, filteredEI}
   const[searchButton, setSearchButton] = useState("");
-  
+  const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]
+  const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
   return(
-    <div className='content-wrapper'>
+    <div className='content-wrapper h-auto'>
         {/* <Navbar/> */}
-        <div className="col-8 mx-auto mt-3">
+        <div>
           <Search
           searchPropOne={searchButton}
           searchPropTwo={searchButton}
@@ -28,30 +31,32 @@ export default function AllForms({filteredClinic, filteredEI}){
           />
         </div>
        <div className="container-fluid">
-       <div className="row mt-3">
+        
+       <div className="row">
            {filteredClinic.map((doc)=>{
             return(
-              <>
+              <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <ClinicForms
                 clinicData={filteredClinic}
-                key={doc.patientName}
+                key={filteredClinic.patientName}
               />
-              </>
+              </div>
             )
            })}
         </div>
-        <div className="row mt-3">
+        <div className="row">
            {filteredEI.map((doc)=>{
             return(
-              <>
+              <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <EIForms
-                clinicData={filteredEI}
-                key={doc.childName}
+                EIData={filteredEI}
+                key={filteredEI.childName}
               />
-              </>
+              </div>
             )
            })}
         </div>
+          
           </div>
     </div>
     

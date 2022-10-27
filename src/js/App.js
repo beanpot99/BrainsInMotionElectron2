@@ -43,7 +43,7 @@ export default function App(){
             <IndividualEIForm/>
             </Route>
             <Route path="/MyForms">
-            {/* <MyForms/> */}
+            <MyForms/>
             </Route>
             <Route path="/AllForms">
             <AllForms/>

@@ -9,9 +9,10 @@ import MyForms from "./views/MyForms";
 import AllForms from "./views/AllForms";
 import Login from "./views/Login";
 import Register from "./views/Register";
-import IndividualForm from "./views/IndividualEIForm";
+import IndividualClinicForm from "./views/IndividualClinicForm";
+import IndividualEIForm from "./views/IndividualEIForm";
 import { HashRouter as Router, Route } from "react-router-dom";
-import Routes from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 export default function App(){
    
@@ -25,34 +26,37 @@ export default function App(){
         
         
         <Navbar/>
-
-        <Routes>
-        {/* <Route path="/EIForm"
-             element={<EIForm/>}
-            />
-            <Route path="/ClinicForm"
-             element={<ClinicForm/>}
-            />
-            <Route path="/IndividualForm/:id"
-             element={<IndividualForm/>}
-            />
-            <Route path="/MyForms"
-             element={<MyForms/>}
-            />
-            <Route path="/AllForms"
-             element={<AllForms/>}
-            />
-            <Route path="/Login"
-             element={<Login/>}
-            />
-            <Route path="/Register"
-             element={<Register/>}
-            /> */}
-            <Route path="/"
-             element={<Home/>}
-            ></Route>
-        </Routes>
-        
+        <div className='content-wrapper'>
+        <Switch>
+            <Route path="/EIForm">
+            <EIForm/>
+            </Route>
+            <Route path="/ClinicForm">
+            <ClinicForm/>
+            </Route>
+            <Route path="/IndividualClinicForm/:id">
+            <IndividualClinicForm/>
+            </Route>
+            <Route path="/IndividualEIForm/:id">
+            <IndividualEIForm/>
+            </Route>
+            <Route path="/MyForms">
+            {/* <MyForms/> */}
+            </Route>
+            <Route path="/AllForms">
+            {/* <AllForms/> */}
+            </Route>
+            <Route path="/Login">
+            <Login/>
+            </Route>
+            <Route path="/Register">
+            <Register/>
+            </Route>
+            <Route path="/">
+            <Home/>
+            </Route>
+        </Switch>
+        </div>
         </Router>
       
     )

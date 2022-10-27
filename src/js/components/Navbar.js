@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export default function Navbar(){
   //const history = useNavigate();  
   
@@ -9,9 +9,9 @@ export default function Navbar(){
         <nav className="chat-navbar-inner">
           <div className="chat-navbar-inner-left">
             
-          {/* <Link className="navbar-brand" to="/"><img src='https://www.seekpng.com/png/detail/945-9455599_parts-of-the-brain-png-easy-simple-brain.png' width="35" height="30"/></Link>
+          <Link className="navbar-brand" to="/"><img src='https://www.seekpng.com/png/detail/945-9455599_parts-of-the-brain-png-easy-simple-brain.png' width="35" height="30"/></Link>
           <button
-              onClick={() => history(-1)}
+            //   onClick={() => history(-1)}
               className="btn btn-primary btn-sm back-button">Back
             </button>
             <Link 
@@ -37,7 +37,7 @@ export default function Navbar(){
               className="btn btn-sm btn-secondary ml-2">Register</Link>
             <Link
               to="/Login"
-              className="btn btn-sm btn-secondary ml-2">Login</Link> */}
+              className="btn btn-sm btn-secondary ml-2">Login</Link>
           </div>
         </nav>
       </div>

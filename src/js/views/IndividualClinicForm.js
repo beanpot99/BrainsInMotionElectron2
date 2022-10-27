@@ -4,7 +4,7 @@ export default function IndividualClinicForm({clinicData, clinicId}){
     return(
         <>
         <div className="modal">
-<h1>{clinidId}</h1>
+<h1>{clinicData.title}</h1>
         </div>
        {/* <div className='content-wrapper modal'>
     <header className={classes.clinicHeader}>

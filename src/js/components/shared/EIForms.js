@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function EIForms({EIData}){
+export default function EIForms({EIData, accessEI}){
     return(
        
              
@@ -8,9 +8,7 @@ export default function EIForms({EIData}){
                   <div className="card-body">
                     <h5 className="card-title">{EIData.childName}</h5>
                     <p className="card-text">{EIData.dateOfEval}</p>
-                    <button
-                      onClick={() => {}}
-                      className="btn btn-outline-primary">Access Form</button>
+                    <button onClick={accessEI}>Access Form</button>
                   </div>
                 </div>
               

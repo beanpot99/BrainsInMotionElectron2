@@ -6,17 +6,29 @@ import classes from "./viewStylesheets/MyForms.module.css";
 import ClinicForms from "../components/shared/ClinicForms";
 import EIForms from "../components/shared/EIForms";
 import IndividualClinicForm from "./IndividualClinicForm";
+import IndividualEIForm from "./IndividualEIForm";
+import { Modal } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
     const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
     const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
-    // const[showClinic,setShowClinic] = useState(false);
+    const[showClinic,setShowClinic] = useState(false);
+    const[showEI,setShowEI] = useState(false);
     const history = useHistory();
-    // const handleShowClinic=()=>{
-    //     history.push(`/IndividualClinicForm/${doc.id}`);
-    // }
+    const handleShowClinic=()=>{
+        setShowClinic(true);
+    }
+    const handleHideClinic=()=>{
+        setShowClinic(false);
+    }
+    const handleShowEI=()=>{
+        setShowClinic(true);
+    }
+    const handleHideEI=()=>{
+        setShowClinic(false);
+    }
     //const {id} = useParams();
     return(
     
@@ -48,8 +60,9 @@ export default function MyForms(){
               <ClinicForms
                 clinicData={doc}
                 key={index}
-                clinicLink={`/IndividualClinicForm/${doc.id}`}
+                accessClinic={handleShowClinic}
               />
+              
               </div>
             )
            })}
@@ -61,12 +74,28 @@ export default function MyForms(){
               <EIForms
                 EIData={doc}
                 key={doc.childName}
+                accessEI={handleShowEI}
               />
               </div>
             )
            })}
         </div>
-         
+        <Modal 
+            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
+            open={showClinic}
+            onClose={handleHideClinic}>
+            <IndividualClinicForm
+            clinicData={filteredClinic[0]}
+            />
+        </Modal>
+        <Modal 
+            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
+            open={showEI}
+            onClose={handleHideEI}>
+            <IndividualEIForm
+            EIData={filteredEI[0]}
+            />
+        </Modal>
           </div>
     </div>
     

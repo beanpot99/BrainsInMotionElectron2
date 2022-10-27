@@ -1,9 +1,12 @@
 import React from "react";
 import classes from "./viewStylesheets/ClinicForm.module.css";
-export default function IndividualClinicForm({clinicData}){
+export default function IndividualClinicForm({clinicData, clinicId}){
     return(
         <>
-       <div className='content-wrapper'>
+        <div className="modal">
+<h1>{clinidId}</h1>
+        </div>
+       {/* <div className='content-wrapper modal'>
     <header className={classes.clinicHeader}>
     <h3 id="clinicHeading">Initial Occupational Therapy Evaluation</h3>
     </header>
@@ -392,7 +395,7 @@ export default function IndividualClinicForm({clinicData}){
       <div className={classes.resetButton}>
     <input type="reset" value="Close Form" className="btn btn-success"/>
     </div>
-    </div>
+    </div> */}
 
     </>
     )

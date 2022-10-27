@@ -1,15 +1,13 @@
 import React from "react";
-
-export default function ClinicForms({clinicData}){
+import { Link } from "react-router-dom";
+export default function ClinicForms({clinicData, clinicLink}){
     return(
        
                 <div className="card ">
                   <div className="card-body">
                     <h5 className="card-title">{clinicData.patientName}</h5>
                     <p className="card-text">{clinicData.dateOfEval}</p>
-                    <button
-                      onClick={() => {}}
-                      className="btn btn-outline-primary">Access Form</button>
+                    <Link to={clinicLink}>Access Form</Link>
                   </div>
                 </div>
              

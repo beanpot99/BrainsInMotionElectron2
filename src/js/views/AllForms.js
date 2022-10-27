@@ -12,9 +12,9 @@ export default function AllForms(){
   const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]
   const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
   return(
-    <div className='content-wrapper h-auto'>
+    <div className='content-wrapper'>
         {/* <Navbar/> */}
-        <div>
+        <div className="w-75 m-auto">
           <Search
           searchPropOne={searchButton}
           searchPropTwo={searchButton}
@@ -28,6 +28,7 @@ export default function AllForms(){
           setSearchPropThree={()=>{
             setSearchButton("All");
          }}
+         
           />
         </div>
        <div className="container-fluid">

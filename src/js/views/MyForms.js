@@ -5,16 +5,25 @@ import Search from "../components/Search";
 import classes from "./viewStylesheets/MyForms.module.css";
 import ClinicForms from "../components/shared/ClinicForms";
 import EIForms from "../components/shared/EIForms";
+import IndividualClinicForm from "./IndividualClinicForm";
+import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
-    const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]
+    const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
     const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
-  return(
+    // const[showClinic,setShowClinic] = useState(false);
+    const history = useHistory();
+    // const handleShowClinic=()=>{
+    //     history.push(`/IndividualClinicForm/${doc.id}`);
+    // }
+    //const {id} = useParams();
+    return(
     
-    <div className='content-wrapper h-auto'>
+    <div className='content-wrapper '>
         {/* <Navbar/> */}
-        <div>
+        
+        <div className="w-75 m-auto">
           <Search
           searchPropOne={searchButton}
           searchPropTwo={searchButton}
@@ -33,12 +42,13 @@ export default function MyForms(){
        <div className="container-fluid">
         
        <div className="row">
-           {filteredClinic.map((doc)=>{
+           {filteredClinic.map((doc, index)=>{
             return(
               <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <ClinicForms
                 clinicData={doc}
-                key={doc.patientName}
+                key={index}
+                clinicLink={`/IndividualClinicForm/${doc.id}`}
               />
               </div>
             )
@@ -56,7 +66,7 @@ export default function MyForms(){
             )
            })}
         </div>
-          
+         
           </div>
     </div>
     

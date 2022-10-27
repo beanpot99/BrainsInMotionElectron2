@@ -92,10 +92,10 @@ export default function Register() {
         </div>
       </form>
       <small className="form-text text-muted mt-2">Already registered?
-      <Link to="/Login">
+      {/* <Link to="/Login">
           <span
             className="btn-link ml-2">Login</span>
-            </Link>
+            </Link> */}
             </small>
       </div>
     </div>

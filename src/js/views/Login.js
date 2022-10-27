@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 export default function Login() {
   return (
     <div className="centered-view">
@@ -29,11 +29,11 @@ export default function Login() {
           </div>
         </form>
         <small className="form-text text-muted mt-2">Don't Have An Account?
-        <Link to="/Register">
+        {/* <Link to="/Register">
           <span
             onClick={() => {}}
             className="btn-link ml-2">Register</span>
-            </Link>
+            </Link> */}
             </small>
       </div>
     </div>

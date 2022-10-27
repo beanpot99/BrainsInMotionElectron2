@@ -10,7 +10,8 @@ import AllForms from "./views/AllForms";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import IndividualForm from "./views/IndividualEIForm";
-//import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
+import Routes from "react-router-dom";
 import Navbar from "./components/Navbar";
 export default function App(){
    
@@ -20,12 +21,13 @@ export default function App(){
        //<Home/> 
        //<EIForm/>
        //<MyForms/>
-       <Router>
+        <Router>
+        
+        
         <Navbar/>
-        <div className='content-wrapper'>
 
         <Routes>
-        <Route path="/EIForm"
+        {/* <Route path="/EIForm"
              element={<EIForm/>}
             />
             <Route path="/ClinicForm"
@@ -45,13 +47,13 @@ export default function App(){
             />
             <Route path="/Register"
              element={<Register/>}
-            />
+            /> */}
             <Route path="/"
              element={<Home/>}
-            />
+            ></Route>
         </Routes>
-        </div>
-       </Router>
+        
+        </Router>
       
     )
 }

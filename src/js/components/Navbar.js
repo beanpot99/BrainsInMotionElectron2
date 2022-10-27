@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 export default function Navbar(){
-  //const history = useNavigate();  
+  const history = useHistory();  
   
   return(
       
@@ -11,7 +11,7 @@ export default function Navbar(){
             
           <Link className="navbar-brand" to="/"><img src='https://www.seekpng.com/png/detail/945-9455599_parts-of-the-brain-png-easy-simple-brain.png' width="35" height="30"/></Link>
           <button
-            //   onClick={() => history(-1)}
+               onClick={() => history.goBack()}
               className="btn btn-primary btn-sm back-button">Back
             </button>
             <Link 

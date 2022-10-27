@@ -37,8 +37,8 @@ export default function AllForms(){
             return(
               <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <ClinicForms
-                clinicData={filteredClinic}
-                key={filteredClinic.patientName}
+                clinicData={doc}
+                key={doc.patientName}
               />
               </div>
             )
@@ -49,8 +49,8 @@ export default function AllForms(){
             return(
               <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <EIForms
-                EIData={filteredEI}
-                key={filteredEI.childName}
+                EIData={doc}
+                key={doc.childName}
               />
               </div>
             )

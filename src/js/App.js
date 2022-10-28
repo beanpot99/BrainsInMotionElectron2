@@ -38,6 +38,7 @@ export default function App(){
 
         <div className={`content-wrapper ${classes.pageBackground} `}>
         <button onClick={sendNotification}>alert</button>
+        <div id='pdf-path'></div>
         <Switch>
             <Route path="/EIForm">
             <EIForm/>

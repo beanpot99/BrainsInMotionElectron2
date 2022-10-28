@@ -2,7 +2,7 @@ const { ipcRenderer, contextBridge } = require('electron');
 
 
 contextBridge.exposeInMainWorld('electron', {
-  notificationApi: {
+  notificationApi: { //include object that has the properties we want in our browser window
     sendNotification(message) {
       ipcRenderer.send('notify', message);
     }
@@ -10,7 +10,13 @@ contextBridge.exposeInMainWorld('electron', {
   batteryApi: {
 
   },
-  fileApi: {
-
-  }
-})
+  pdfApi: {
+    saveAsPdf(){
+        ipcRenderer.send('print-to-pdf');
+    }
+   },
+   pdfPathApi:{
+    
+   }
+   }
+)

@@ -5,6 +5,7 @@ import Search from "../components/Search";
 import ClinicForms from "../components/shared/ClinicForms";
 import EIForms from "../components/shared/EIForms";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import classes from "./viewStylesheets/AllForms.module.css";
 export default function AllForms(){ 
     // {filteredClinic, filteredEI}
@@ -12,24 +13,21 @@ export default function AllForms(){
   const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]
   const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
   const[showClinic,setShowClinic] = useState(false);
+  const history= useHistory();
     const[showEI,setShowEI] = useState(false);
     const handleShowClinic=()=>{
-        setShowClinic(true);
+        history.push("/Dummyclinic");
     }
-    const handleHideClinic=()=>{
-        setShowClinic(false);
-    }
+    
     const handleShowEI=()=>{
-        setShowClinic(true);
+        history.push("/Dummyclinic");
     }
-    const handleHideEI=()=>{
-        setShowClinic(false);
-    }
+    
   return(
     
     <div className='content-wrapper '>
         {/* <Navbar/> */}
-        
+        <h6>All Forms</h6>
         <div className="w-75 m-auto">
           <Search
           searchPropOne={searchButton}
@@ -75,22 +73,6 @@ export default function AllForms(){
             )
            })}
         </div>
-        <Modal 
-            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
-            open={showClinic}
-            onClose={handleHideClinic}>
-            <IndividualClinicForm
-            clinicData={doc}
-            />
-        </Modal>
-        <Modal 
-            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
-            open={showEI}
-            onClose={handleHideEI}>
-            <IndividualEIForm
-            EIData={doc}
-            />
-        </Modal>
           </div>
     </div>
     

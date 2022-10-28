@@ -1,7 +1,11 @@
-const { app, BrowserWindow, ipcMain, Notification } = require('electron');
+const { app, BrowserWindow, ipcMain, Notification, shell } = require('electron');
 const path = require('path');
 const isDev = !app.isPackaged;
-
+const fs = require('fs'); //fs module provides api for interacting with file system
+const os = require('os'); //os module gives utility methods and we use this to create temp location to store pdf file
+//const { electron } = require('process');
+ //handles asyc and sync messages sent from renderer aka webpage
+//const shell = electron.shell; //provides functions related to desktop integration 
 function createWindow() {
   
   const win = new BrowserWindow({
@@ -9,9 +13,9 @@ function createWindow() {
     height: 800,
     backgroundColor: "white",
     webPreferences: {
-      nodeIntegration: false,
-      worldSafeExecuteJavaScript: true,
-      contextIsolation: true,
+      nodeIntegration: true,
+       worldSafeExecuteJavaScript: true,
+       contextIsolation: true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
@@ -28,7 +32,7 @@ if (isDev) {
   
 app.whenReady().then(createWindow);
 
-ipcMain.on('notify', (_, message) => {
+ipcMain.on('notify', (_, message) => { //underscore if you aren't using the event parameter anywhere, if you use e it grays out
     new Notification({title: 'Notification', body: message}).show();
   })
 
@@ -48,3 +52,23 @@ app.on('activate', () => {
     createWindow();
   }
 })
+
+ipcMain.on('print-to-pdf', event =>{
+    const pdfPath = path.join(os.tmpdir(), 'some-pdf.pdf'); //stores pdf file in temp location using os module and windows to get contents of the window
+    const windows= BrowserWindow.fromWebContents(event.sender);
+    windows.webContents.printToPDF({},(error,data)=>{ //converts content to pdf and pritns windows webpage as pdf
+        if(error) return console.log(error.message);
+        fs.writeFile(pdfPath, data, err =>{ //writes the pdf file
+            if(err) return console.log(err.message);
+            shell.openExternal('file://' + pdfPath);
+            event.sender.send('wrote-pdf', pdfPath); //will be handles in renderer.js
+        })
+    })
+})
+
+ipcMain.on('wrote-pdf', (event, path)=>{
+    const message ='Wrote pdf to : ${path}';
+    document.getElementById('pdf-path').innerHTML =message;
+})
+
+//e underscore signifies that this api is coming from an electron environemnt

@@ -10,6 +10,7 @@ import IndividualEIForm from "./IndividualEIForm";
 import { Modal } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
+import Dummyclinic from "./Dummyclinic";
 export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
     const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
@@ -18,13 +19,13 @@ export default function MyForms(){
     const[showEI,setShowEI] = useState(false);
     const history = useHistory();
     const handleShowClinic=()=>{
-        setShowClinic(true);
+        history.push("/Dummyclinic");
     }
     const handleHideClinic=()=>{
         setShowClinic(false);
     }
     const handleShowEI=()=>{
-        setShowClinic(true);
+        history.push("/Dummyclinic");
     }
     const handleHideEI=()=>{
         setShowClinic(false);
@@ -34,7 +35,7 @@ export default function MyForms(){
     
     <div className='content-wrapper '>
         {/* <Navbar/> */}
-        
+        <h6>My Forms</h6>
         <div className="w-75 m-auto">
           <Search
           searchPropOne={searchButton}
@@ -80,22 +81,18 @@ export default function MyForms(){
             )
            })}
         </div>
-        <Modal 
+        {/* <Modal 
             style={{display:'flex',alignItems:'center',justifyContent:'center'}}
             open={showClinic}
             onClose={handleHideClinic}>
-            <IndividualClinicForm
-            clinicData={filteredClinic[0]}
-            />
+            <Dummyclinic/>
         </Modal>
         <Modal 
-            style={{display:'flex',alignItems:'center',justifyContent:'center'}}
+            // style={{display:'flex',alignItems:'center',justifyContent:'center'}}
             open={showEI}
             onClose={handleHideEI}>
-            <IndividualEIForm
-            EIData={filteredEI[0]}
-            />
-        </Modal>
+            <Dummyclinic/>
+        </Modal> */}
           </div>
     </div>
     

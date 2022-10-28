@@ -15,9 +15,16 @@ import { HashRouter as Router, Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import classes from "./App.module.css";
 import Navbar from "./components/Navbar";
+import Dummyclinic from "./views/Dummyclinic";
+//import { electron } from "webpack";
 export default function App(){
-   
+   const sendNotification=()=>{
+    electron.notificationApi.sendNotification('notify', 'this is my message');
+   }
     
+   const saveAsAPdf=()=>{
+    electron.pdfApi.saveAsPdf();
+   }
     return(
         //<ClinicForm/>
        //<Home/> 
@@ -26,9 +33,11 @@ export default function App(){
        
         <Router>
         
-        
         <Navbar/>
+        
+
         <div className={`content-wrapper ${classes.pageBackground} `}>
+        <button onClick={sendNotification}>alert</button>
         <Switch>
             <Route path="/EIForm">
             <EIForm/>
@@ -53,6 +62,11 @@ export default function App(){
             </Route>
             <Route path="/Register">
             <Register/>
+            </Route>
+            <Route path="/Dummyclinic">
+            <Dummyclinic
+             savePDF={saveAsAPdf}
+            />
             </Route>
             <Route path="/">
             <Home/>

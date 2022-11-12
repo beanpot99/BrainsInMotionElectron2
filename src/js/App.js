@@ -16,14 +16,21 @@ import { Switch } from "react-router-dom";
 import classes from "./App.module.css";
 import Navbar from "./components/Navbar";
 import Dummyclinic from "./views/Dummyclinic";
+import { useState } from "react";
 //import { electron } from "webpack";
 export default function App(){
+   
    const sendNotification=()=>{
     electron.notificationApi.sendNotification('notify', 'this is my message');
    }
     
+//    const pdfSuccess=()=>{
+//     electron.pdfApi.saveAsPdf('notify', 'this is my message');
+//    }
+    
    const saveAsAPdf=()=>{
-    electron.pdfApi.saveAsPdf();
+    electron.pdfApi.saveAsPdf('print-to-pdf', 'pdf success');
+    // pdfSuccess();
    }
     return(
         //<ClinicForm/>

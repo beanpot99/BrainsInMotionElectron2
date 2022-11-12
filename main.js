@@ -6,6 +6,7 @@ const os = require('os'); //os module gives utility methods and we use this to c
 //const { electron } = require('process');
  //handles asyc and sync messages sent from renderer aka webpage
 //const shell = electron.shell; //provides functions related to desktop integration 
+//const win= require('electron').BrowserWindow;
 function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
@@ -73,14 +74,21 @@ app.on('activate', () => {
 // })
 
 ipcMain.on('print-to-pdf',()=>{
-    const windows = win
-    windows.webContents.printToPDF({}).then(data=>{
-        fs.writeFile(path.join(os.homedir(),'Desktop', 'print.pdf'),data,(error)=>{
-            if (error) throw error
-            console.log('Write PDF successfully.')
-          })
-        }).catch(error => {
-          console.log(error)
+   const win =BrowserWindow.getFocusedWindow();
+   const currentDate= new Date();
+   const myDate = currentDate.getDate(); //return the day of the month
+    const myHour = currentDate.getHours(); //return the hours
+    const myMin = currentDate.getMinutes(); //return the minutes
+    const pdfTitle = myDate.toString() + myHour.toString() + myMin.toString();
+    const pdfPath = path.join(os.homedir(), 'Desktop', `${pdfTitle}.pdf`)
+    win.webContents.printToPDF({}).then(data => {
+        fs.writeFile(pdfPath, data, (error) => {
+          if (error){throw error} else{
+          console.log(`Wrote PDF successfully to ${pdfPath}`)
+          }
         })
-        })
+      }).catch(error => {
+        console.log(`Failed to write PDF to ${pdfPath}: `, error)
+      })
 //e underscore signifies that this api is coming from an electron environemnt
+})

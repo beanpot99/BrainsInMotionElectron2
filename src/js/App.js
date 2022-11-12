@@ -30,7 +30,7 @@ export default function App(){
     
    const saveAsAPdf=()=>{
     electron.pdfApi.saveAsPdf('print-to-pdf', 'pdf success');
-    // pdfSuccess();
+    sendNotification();
    }
     return(
         //<ClinicForm/>

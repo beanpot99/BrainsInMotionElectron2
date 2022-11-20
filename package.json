@@ -21,6 +21,7 @@
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.5.2",
     "css-loader": "^4.2.2",
+    "firebase": "^7.19.1",
     "nav-react": "^1.0.5",
     "navbar-react": "^1.0.4",
     "react": "^16.13.1",

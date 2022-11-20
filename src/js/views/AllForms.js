@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Forms from "../components/shared/EIForms";
 import Search from "../components/Search";
@@ -7,6 +7,7 @@ import EIForms from "../components/shared/EIForms";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./viewStylesheets/AllForms.module.css";
+import { fetchForms } from "../api/forms";
 export default function AllForms(){ 
     // {filteredClinic, filteredEI}
   const[searchButton, setSearchButton] = useState("");
@@ -22,7 +23,9 @@ export default function AllForms(){
     const handleShowEI=()=>{
         history.push("/Dummyclinic");
     }
-    
+     useEffect(()=>{
+      fetchForms();
+     },[])
   return(
     
     <div className='content-wrapper '>

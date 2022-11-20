@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Search from "../components/Search";
 import Forms from "../components/shared/EIForms";
 import ViewTitle from "../components/shared/ViewTitle";
+
 export default function Home(){
     return(
 <>

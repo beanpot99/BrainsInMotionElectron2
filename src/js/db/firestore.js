@@ -2,15 +2,15 @@ import firebase, { initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 
 const config = {
-    apiKey: "AIzaSyB75gWgtoYVRtj2v-VfaISrlh59odt-zvM",
-    authDomain: "brains-in-motion-forms.firebaseapp.com",
-    projectId: "brains-in-motion-forms",
-    storageBucket: "brains-in-motion-forms.appspot.com",
-    messagingSenderId: "954043925662",
-    appId: "1:954043925662:web:191c523ef2e4be418fe78f",
-    measurementId: "G-45Y5RLHP0K"
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    measurementId: process.env.FIREBASE_MEASUREMENT_ID,
   };
 
   // Initialize Firebase
-export const app = initializeApp(config);
+export default firebase.initializeApp(config).firestore();
 //firebase.analytics();

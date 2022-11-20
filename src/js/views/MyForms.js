@@ -11,7 +11,7 @@ import { Modal } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
 import { useState } from "react";
 import Dummyclinic from "./Dummyclinic";
-import { fetchForms } from "../api/forms";
+import { fetchForms } from "../api/clinicForms";
 export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
     const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]

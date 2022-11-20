@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 export default function Navbar(){
   const history = useHistory();  
   

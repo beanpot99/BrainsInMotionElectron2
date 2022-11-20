@@ -7,7 +7,9 @@ import EIForms from "../components/shared/EIForms";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import classes from "./viewStylesheets/AllForms.module.css";
-import { fetchForms } from "../api/forms";
+import { fetchClinicForms } from "../actions/clinicFormActions";
+import { fetchEIForms } from "../actions/eiFormActions";
+import { useDispatch } from "react-redux";
 export default function AllForms(){ 
     // {filteredClinic, filteredEI}
   const[searchButton, setSearchButton] = useState("");
@@ -23,9 +25,13 @@ export default function AllForms(){
     const handleShowEI=()=>{
         history.push("/Dummyclinic");
     }
+    const dispatch = useDispatch();
      useEffect(()=>{
-      fetchForms();
-     },[])
+      dispatch(fetchClinicForms())
+     },[dispatch])
+     useEffect(()=>{
+      dispatch(fetchEIForms())
+     },[dispatch])
   return(
     
     <div className='content-wrapper '>

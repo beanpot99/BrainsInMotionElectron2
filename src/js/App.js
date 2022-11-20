@@ -2,6 +2,7 @@ import React from "react";
 //import { ipcRenderer } from "electron";
 //Renderer
 //import logo from './assets/logo.png';
+import { Provider } from "react-redux";
 import Home from "./views/Home";
 import ClinicForm from "./views/ClinicForm";
 import EIForm from "./views/EIForm";
@@ -17,6 +18,8 @@ import classes from "./App.module.css";
 import Navbar from "./components/Navbar";
 import Dummyclinic from "./views/Dummyclinic";
 import { useState } from "react";
+import store from "./store";
+
 //import { electron } from "webpack";
 export default function App(){
    
@@ -32,12 +35,14 @@ export default function App(){
     electron.pdfApi.saveAsPdf('print-to-pdf', 'pdf success');
     sendNotification();
    }
+
+//    const store = configureStores();
     return(
         //<ClinicForm/>
        //<Home/> 
        //<EIForm/>
        //<MyForms/>
-       
+       <Provider store={store}>
         <Router>
         
         <Navbar/>
@@ -82,6 +87,6 @@ export default function App(){
         </Switch>
         </div>
         </Router>
-        
+        </Provider>
     )
 }

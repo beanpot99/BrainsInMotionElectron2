@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Select from "react-select";
 import classes from "../views/viewStylesheets/ClinicForm.module.css";
+import clinicFormActions from "../actions/clinicFormActions";
 //TO-DO:
 //Automatically fills in the logged in user's information like name and signature
-export default function ClinicForm(){
+export default function ClinicForm({id, setClinicId, userId}){
    
     const [dateOfEval, setDateOfEval] = useState("");
     const [patientName, setPatientName] = useState("");
@@ -498,6 +499,283 @@ export default function ClinicForm(){
         ...( { disabled: false }),
       }
   ];
+
+//   const newClinic = {
+//     dateOfEval,
+//     patientName,
+//     clientPhone,
+//     address,
+//     parentName,
+//     diagnosis,
+//     therapist,
+//     DOB,
+//     physicianName,
+//     payer,
+//     referral,
+//     medicalHistory,
+//     assessmentMethod,
+//     behavioralObservations,
+//     fineMotorSkills,
+//     communicationStatus,
+//     educationLevel,
+//     strengthRangeMotion,
+//     activitiesDailyLiving,
+//     fearParalysis,
+//     moro,
+//     atnr,
+//     stnr,
+//     tonicNeck,
+//     spinalGalant,
+//     palmar,
+//     visualTracking,
+//     visualSaccades,
+//     convergenceDivergence,
+//     frequencyOT,
+//     durationOT,
+//     goalOne,
+//     goalTwo,
+//     goalThree,
+//     goalFour,
+//     therapistName,
+//     therapistSignature,
+//     seekingSeeker,
+//     seekingSeekerSummaryScore,
+//     avoidingAvoider,
+//     avoidingAvoiderSummaryScore,
+//     sensitivitySensor,
+//     sensitivitySensorSummaryScore,
+//     registrationBystander,
+//     registrationBystanderSummaryScore,
+//     auditory,
+//     auditorySummaryScore,
+//     visual,
+//     visualSummaryScore,
+//     touch,
+//     touchSummaryScore,
+//     movement,
+//     movementSummaryScore,
+//     bodyPosition,
+//     bodyPositionSummaryScore,
+//     oral,
+//     oralSummaryScore,
+//     conduct,
+//     conductSummaryScore,
+//     socialEmotional,
+//     socialEmotionalSummaryScore,
+//     attentional,
+//     attentionalSummaryScore
+//   }
+const handleSubmit = async(e)=>{
+    e.preventDefault();
+    const newClinic = {
+        dateOfEval,
+        patientName,
+        clientPhone,
+        address,
+        parentName,
+        diagnosis,
+        therapist,
+        DOB,
+        physicianName,
+        payer,
+        referral,
+        medicalHistory,
+        assessmentMethod,
+        behavioralObservations,
+        fineMotorSkills,
+        communicationStatus,
+        educationLevel,
+        strengthRangeMotion,
+        activitiesDailyLiving,
+        fearParalysis,
+        moro,
+        atnr,
+        stnr,
+        tonicNeck,
+        spinalGalant,
+        palmar,
+        visualTracking,
+        visualSaccades,
+        convergenceDivergence,
+        frequencyOT,
+        durationOT,
+        goalOne,
+        goalTwo,
+        goalThree,
+        goalFour,
+        therapistName,
+        therapistSignature,
+        seekingSeeker,
+        seekingSeekerSummaryScore,
+        avoidingAvoider,
+        avoidingAvoiderSummaryScore,
+        sensitivitySensor,
+        sensitivitySensorSummaryScore,
+        registrationBystander,
+        registrationBystanderSummaryScore,
+        auditory,
+        auditorySummaryScore,
+        visual,
+        visualSummaryScore,
+        touch,
+        touchSummaryScore,
+        movement,
+        movementSummaryScore,
+        bodyPosition,
+        bodyPositionSummaryScore,
+        oral,
+        oralSummaryScore,
+        conduct,
+        conductSummaryScore,
+        socialEmotional,
+        socialEmotionalSummaryScore,
+        attentional,
+        attentionalSummaryScore
+      }
+      try{
+        if(id !==undefined && id !== ""){
+            await clinicFormActions.updateClinicForm(id, newClinic, userId);
+            setPlantId("");
+        }else{
+            await clinicFormActions.addClinicForm(newClinic, userId);
+        }
+      }catch(err){
+        console.log(err);
+      }
+      setDateOfEval(""),
+        setPatientName(""),
+        setClientPhone(""),
+        setAddress(""),
+        setParentName(""),
+        setDiagnosis(""),
+        setTherapist(""),
+        setDOB(""),
+        setPhysicianName(""),
+        setPayer(""),
+        setReferral(""),
+        setMedicalHistory(""),
+        setAssessmentMethod(""),
+        setBehavioralObservations(""),
+        setFineMotorSkills(""),
+        setCommunicationStatus(""),
+        setEducationLevel(""),
+        setStrengthRangeMotion(""),
+        setActivitiesDailyLiving(""),
+        setFearParalysis(""),
+        setMoro(""),
+        setAtnr(""),
+        setStnr(""),
+        setTonicNeck(""),
+        setSpinalGalant(""),
+        setPalmar(""),
+        setVisualTracking(""),
+        setVisualSaccades(""),
+        setConvergenceDivergence(""),
+        setFrequencyOT(""),
+        setDurationOT(""),
+        setGoalOne(""),
+        setGoalTwo(""),
+        setGoalThree(""),
+        setGoalFour(""),
+        setTherapistName(""),
+        setTherapistSignature(""),
+        setSeekingSeeker(""),
+        setSeekingSeekerSummaryScore(""),
+        setAvoidingAvoider(""),
+        setAvoidingAvoiderSummaryScore(""),
+        setSensitivitySensor(""),
+        setSensitivitySensorSummaryScore(""),
+        setRegistrationBystander(""),
+        setRegistrationBystanderSummaryScore(""),
+        setAuditory(""),
+        setAuditorySummaryScore(""),
+        setVisual(""),
+        setVisualSummaryScore(""),
+        setTouch(""),
+        setTouchSummaryScore(""),
+        setMovement(""),
+        setMovementSummaryScore(""),
+        setBodyPosition(""),
+        setBodyPositionSummaryScore(""),
+        setOral(""),
+        setOralSummaryScore(""),
+        setConduct(""),
+        setConductSummaryScore(""),
+        setSocialEmotional(""),
+        setSocialEmotionalSummaryScore(""),
+        setAttentional(""),
+        setAttentionalSummaryScore("")
+}
+const editClinicHandler = async ()=>{
+    try{
+        const docSnap = await clinicFormActions.getClinicForm(id, userId);
+        setDateOfEval(docSnap.data().dateOfEval),
+        setPatientName(docSnap.data().patientName),
+        setClientPhone(docSnap.data().clientPhone),
+        setAddress(docSnap.data().address),
+        setParentName(docSnap.data().parentName),
+        setDiagnosis(docSnap.data().diagnosis),
+        setTherapist(docSnap.data().therapist),
+        setDOB(docSnap.data().DOB),
+        setPhysicianName(docSnap.data().physicianName),
+        setPayer(docSnap.data().payer),
+        setReferral(docSnap.data().referral),
+        setMedicalHistory(docSnap.data().medicalHistory),
+        setAssessmentMethod(docSnap.data().assessmentMethod),
+        setBehavioralObservations(docSnap.data().behavioralObservations),
+        setFineMotorSkills(docSnap.data().fineMotorSkills),
+        setCommunicationStatus(docSnap.data().communicationStatus),
+        setEducationLevel(docSnap.data().educationLevel),
+        setStrengthRangeMotion(docSnap.data().strengthRangeMotion),
+        setActivitiesDailyLiving(docSnap.data().activitiesDailyLiving),
+        setFearParalysis(docSnap.data().fearParalysis),
+        setMoro(docSnap.data().moro),
+        setAtnr(docSnap.data().atnr),
+        setStnr(docSnap.data().stnr),
+        setTonicNeck(docSnap.data().tonicNeck),
+        setSpinalGalant(docSnap.data().spinalGalant),
+        setPalmar(docSnap.data().palmar),
+        setVisualTracking(docSnap.data().visualTracking),
+        setVisualSaccades(docSnap.data().visualSaccades),
+        setConvergenceDivergence(docSnap.data().convergenceDivergence),
+        setFrequencyOT(docSnap.data().frequencyOT),
+        setDurationOT(docSnap.data().durationOT),
+        setGoalOne(docSnap.data().goalOne),
+        setGoalTwo(docSnap.data().goalTwo),
+        setGoalThree(docSnap.data().goalThree),
+        setGoalFour(docSnap.data().goalFour),
+        setTherapistName(docSnap.data().therapistName),
+        setTherapistSignature(docSnap.data().therapistSignature),
+        setSeekingSeeker(docSnap.data().seekingSeeker),
+        setSeekingSeekerSummaryScore(docSnap.data().seekingSeekerSummaryScore),
+        setAvoidingAvoider(docSnap.data().avoidingAvoider),
+        setAvoidingAvoiderSummaryScore(docSnap.data().avoidingAvoiderSummaryScore),
+        setSensitivitySensor(docSnap.data().sensitivitySensor),
+        setSensitivitySensorSummaryScore(docSnap.data().sensitivitySensorSummaryScore),
+        setRegistrationBystander(docSnap.data().registrationBystander),
+        setRegistrationBystanderSummaryScore(docSnap.data().registrationBystanderSummaryScore),
+        setAuditory(docSnap.data().auditory),
+        setAuditorySummaryScore(docSnap.data().auditorySummaryScore),
+        setVisual(docSnap.data().visual),
+        setVisualSummaryScore(docSnap.data().visualSummaryScore),
+        setTouch(docSnap.data().touch),
+        setTouchSummaryScore(docSnap.data().touchSummaryScore),
+        setMovement(docSnap.data().movement),
+        setMovementSummaryScore(docSnap.data().movementSummaryScore),
+        setBodyPosition(docSnap.data().bodyPosition),
+        setBodyPositionSummaryScore(docSnap.data().bodyPositionSummaryScore),
+        setOral(docSnap.data().oral),
+        setOralSummaryScore(docSnap.data().oralSummaryScore),
+        setConduct(docSnap.data().conduct),
+        setConductSummaryScore(docSnap.data().conductSummaryScore),
+        setSocialEmotional(docSnap.data().socialEmotional),
+        setSocialEmotionalSummaryScore(docSnap.data().socialEmotionalSummaryScore),
+        setAttentional(docSnap.data().attentional),
+        setAttentionalSummaryScore(docSnap.data().attentionalSummaryScore)
+}catch(err){
+    console.log(err);
+}
+}
   useEffect(()=>{
     handleSeekingSeeker();
   },[seekingSeeker]);
@@ -549,6 +827,12 @@ export default function ClinicForm(){
   useEffect(()=>{
     handleAttentional();
   },[attentional]);
+
+  useEffect(()=>{
+    if(id !==undefined && id !== ""){
+        editClinicHandler();
+    }
+  },[id]);
 
     return(
     <>
@@ -1395,7 +1679,7 @@ export default function ClinicForm(){
 </div>
     <div className={`form-group text-right ${classes.buttons}`}>
         <div className={classes.submitButton}>
-    <input type="submit" value="Submit" className="btn btn-success"/>
+    <input type="submit" value="Submit" onClick={handleSubmit} className="btn btn-success"/>
       </div>
       <div className={classes.resetButton}>
     <input type="reset" value="Reset" className="btn btn-success"/>

@@ -9,8 +9,9 @@ import { useHistory } from "react-router-dom";
 import classes from "./viewStylesheets/AllForms.module.css";
 import { fetchClinicForms } from "../actions/clinicFormActions";
 import { fetchEIForms } from "../actions/eiFormActions";
-import { useDispatch } from "react-redux";
-export default function AllForms(){ 
+
+
+export default function AllForms({filteredClinic, filteredEI}){ 
     // {filteredClinic, filteredEI}
   const[searchButton, setSearchButton] = useState("");
   const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]
@@ -18,20 +19,19 @@ export default function AllForms(){
   const[showClinic,setShowClinic] = useState(false);
   const history= useHistory();
     const[showEI,setShowEI] = useState(false);
+    
+    
     const handleShowClinic=()=>{
         history.push("/Dummyclinic");
     }
     
+    
     const handleShowEI=()=>{
         history.push("/Dummyclinic");
     }
-    const dispatch = useDispatch();
-     useEffect(()=>{
-      dispatch(fetchClinicForms())
-     },[dispatch])
-     useEffect(()=>{
-      dispatch(fetchEIForms())
-     },[dispatch])
+ 
+
+    
   return(
     
     <div className='content-wrapper '>
@@ -56,12 +56,12 @@ export default function AllForms(){
        <div className="container-fluid">
         
        <div className="row">
-           {filteredClinic.map((doc, index)=>{
+           {filteredClinic.map((doc)=>{
             return(
               <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <ClinicForms
                 clinicData={doc}
-                key={index}
+                key={doc.patientName}
                 accessClinic={handleShowClinic}
               />
               

@@ -1,7 +1,7 @@
-import firebase, { initializeApp } from 'firebase/app';
+import{ initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 
-const config = {
+const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,
     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
     projectId: process.env.FIREBASE_PROJECT_ID,
@@ -12,5 +12,7 @@ const config = {
   };
 
   // Initialize Firebase
-export default firebase.initializeApp(config).firestore();
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
 //firebase.analytics();

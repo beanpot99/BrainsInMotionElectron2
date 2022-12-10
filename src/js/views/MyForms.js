@@ -12,13 +12,16 @@ import { useHistory, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Dummyclinic from "./Dummyclinic";
 import { fetchForms } from "../api/clinicForms";
+import clinicFormActions from "../actions/clinicFormActions";
+import { collection, getDocs } from "firebase/firestore";
 export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
-    const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
-    const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
+    // const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
+    // const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
     const [clinicId, setClinicId] = useState("");
     const[showClinic,setShowClinic] = useState(false);
     const[showEI,setShowEI] = useState(false);
+    const[filteredClinic, setFilteredClinic] = useState([]);
     const history = useHistory();
     const handleShowClinic=()=>{
         history.push("/Dummyclinic");
@@ -35,10 +38,22 @@ export default function MyForms(){
     const getClinicIdHandler = (id) => {
       setClinicId(id);
     }
-    // useEffect(()=>{
-    //   fetchForms();
-    //  },[])
-    //const {id} = useParams();
+    const getForms = async () => {
+      const data = await clinicFormActions.getAllClinicForms();
+      setFilteredClinic(data.docs.map((doc)=>({...doc.data(), id:doc.id})));
+  };
+    const deleteHandler = async(id) =>{
+      await clinicFormActions.deleteClinic(id);
+    }
+    const confirmDelete =(id) =>{
+      const confirmed = window.confirm("Are you sure you want to delete this form?")
+    if(confirmed){
+      deleteHandler(id);
+    }
+    }
+    useEffect(()=>{
+      getForms()
+    },[]);
     return(
     
     <div className='content-wrapper '>
@@ -77,7 +92,7 @@ export default function MyForms(){
            })}
         </div>
         <div className="row">
-           {filteredEI.map((doc)=>{
+           {/* {filteredEI.map((doc)=>{
             return(
               <div className={`col-md-4 align-items-stretch ${classes.individualCard}`}>
               <EIForms
@@ -87,7 +102,7 @@ export default function MyForms(){
               />
               </div>
             )
-           })}
+           })} */}
         </div>
         {/* <Modal 
             style={{display:'flex',alignItems:'center',justifyContent:'center'}}

@@ -1,0 +1,22 @@
+.buttons{
+    margin-top: auto;
+     
+     
+  }
+  .button-trash{
+     position: absolute;
+     bottom:1.25rem;
+
+     left: 8.5rem;
+ 
+  }
+  .button-edit{
+     position: absolute;
+    bottom:1.25rem;
+     right: 1rem;
+  }
+  /* .button-view{
+    position: absolute;
+    bottom:1rem;
+    left: 1rem;
+ } */

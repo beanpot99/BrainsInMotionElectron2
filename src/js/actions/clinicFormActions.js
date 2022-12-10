@@ -4,7 +4,7 @@ import ClinicForms from "../components/shared/ClinicForms";
 
 class ClinicDataService{
     getDocRef=(user)=>{
-    return document(db,"users",user)
+    return doc(db,"users",user)
     }
     getCollectionRef=(user)=>{
         return collection(db, "users",user,"ClinicForms");

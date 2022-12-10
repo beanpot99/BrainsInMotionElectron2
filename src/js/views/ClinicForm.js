@@ -5,7 +5,7 @@ import classes from "../views/viewStylesheets/ClinicForm.module.css";
 import clinicFormActions from "../actions/clinicFormActions";
 //TO-DO:
 //Automatically fills in the logged in user's information like name and signature
-export default function ClinicForm({id, setClinicId, userId}){
+export default function ClinicForm({id, userId}){
    
     const [dateOfEval, setDateOfEval] = useState("");
     const [patientName, setPatientName] = useState("");
@@ -70,6 +70,7 @@ export default function ClinicForm({id, setClinicId, userId}){
     const [socialEmotionalSummaryScore, setSocialEmotionalSummaryScore] = useState("");
     const [attentional, setAttentional] = useState(""); //is a number
     const [attentionalSummaryScore, setAttentionalSummaryScore] = useState("");
+    const [clinicId, setClinicId] = useState("");
     const handleAssessmentMethod=()=>{
         console.log('click');
     }
@@ -635,7 +636,7 @@ const handleSubmit = async(e)=>{
       try{
         if(id !==undefined && id !== ""){
             await clinicFormActions.updateClinicForm(id, newClinic, userId);
-            setPlantId("");
+            setClinicId("");
         }else{
             await clinicFormActions.addClinicForm(newClinic, userId);
         }
@@ -945,15 +946,9 @@ const editClinicHandler = async ()=>{
                 <Select
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
-                    value={
-                      assessmentMethod
-                        ? assessOptions.filter((obj) =>
-                            assessmentMethod.includes(obj.value)
-                          )
-                        : ""
-                    }
+                    value={assessmentMethod}
                     options={assessOptions}
-                    onChange={(e)=>setAssessmentMethod(e.target.value)}
+                    onChange={(e)=>setAssessmentMethod(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -967,14 +962,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      behavioralObservations
-                        ? behavioralOptions.filter((obj) =>
-                            behavioralObservations.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      behavioralObservations}
                     options={behavioralOptions}
-                    onChange={(e)=>setBehavioralObservations(e.target.value)}
+                    onChange={(e)=>setBehavioralObservations(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -988,14 +978,10 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      fineMotorSkills
-                        ? fineMotorOptions.filter((obj) =>
-                            fineMotorSkills.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      fineMotorSkills}
                     options={fineMotorOptions}
-                    onChange={(e)=>setFineMotorSkills(e.target.value)}
+                    onChange={(e)=>setFineMotorSkills(e
+                        )}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -1009,14 +995,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      strengthRangeMotion
-                        ? strengthROMOptions.filter((obj) =>
-                        strengthRangeMotion.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      strengthRangeMotion}
                     options={strengthROMOptions}
-                    onChange={(e)=>setStrengthRangeMotion(e.target.value)}
+                    onChange={(e)=>setStrengthRangeMotion(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -1031,14 +1012,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      communicationStatus
-                        ? commStatusOptions.filter((obj) =>
-                        communicationStatus.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      communicationStatus}
                     options={commStatusOptions}
-                    onChange={(e)=>setCommunicationStatus(e.target.value)}
+                    onChange={(e)=>setCommunicationStatus(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -1053,14 +1029,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      educationLevel
-                        ? edLevelOptions.filter((obj) =>
-                        educationLevel.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      educationLevel}
                     options={edLevelOptions}
-                    onChange={(e)=>setEducationLevel(e.target.value)}
+                    onChange={(e)=>setEducationLevel(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -1076,14 +1047,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      activitiesDailyLiving
-                        ? adlOptions.filter((obj) =>
-                        activitiesDailyLiving.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      activitiesDailyLiving}
                     options={adlOptions}
-                    onChange={(e)=>setActivitiesDailyLiving(e.target.value)}
+                    onChange={(e)=>setActivitiesDailyLiving(e)}
                     isOptionDisabled={(option) => option.disabled}
                     isMulti
                     required
@@ -1598,14 +1564,9 @@ const editClinicHandler = async ()=>{
                     className="dropdown"
                     placeholder={<p className={classes.placeholder}>Select</p>}
                     value={
-                      frequencyOT
-                        ? frequencyOptions.filter((obj) =>
-                        frequencyOT.includes(obj.value)
-                          )
-                        : ""
-                    }
+                      frequencyOT}
                     options={frequencyOptions}
-                    onChange={handleAssessmentMethod}
+                    onChange={(e) => setFrequencyOT(e)}
                     isOptionDisabled={(option) => option.disabled}
                     required
                   />

@@ -16,6 +16,7 @@ export default function MyForms(){
     const[searchButton, setSearchButton] = useState("");
     const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday", id:1},{patientName: "Grace", dateOfEval: "tuesday",id:2},{patientName: "Grace", dateOfEval: "tuesday", id:3}]
     const filteredEI =[{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"},{childName: "Grace", dateOfEval: "tuesday"}]
+    const [clinicId, setClinicId] = useState("");
     const[showClinic,setShowClinic] = useState(false);
     const[showEI,setShowEI] = useState(false);
     const history = useHistory();
@@ -30,6 +31,9 @@ export default function MyForms(){
     }
     const handleHideEI=()=>{
         setShowClinic(false);
+    }
+    const getClinicIdHandler = (id) => {
+      setClinicId(id);
     }
     // useEffect(()=>{
     //   fetchForms();
@@ -100,6 +104,6 @@ export default function MyForms(){
           </div>
     </div>
     
-  )
+  )  
     
 }

@@ -11,7 +11,7 @@ import { fetchClinicForms } from "../actions/clinicFormActions";
 import { fetchEIForms } from "../actions/eiFormActions";
 
 
-export default function AllForms({filteredClinic, filteredEI}){ 
+export default function AllForms(){ 
     // {filteredClinic, filteredEI}
   const[searchButton, setSearchButton] = useState("");
   const filteredClinic =[{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"},{patientName: "Grace", dateOfEval: "tuesday"}]

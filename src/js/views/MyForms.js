@@ -9,7 +9,7 @@ import IndividualClinicForm from "./IndividualClinicForm";
 import IndividualEIForm from "./IndividualEIForm";
 import { Modal } from "@material-ui/core";
 import { useHistory, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Dummyclinic from "./Dummyclinic";
 import { fetchForms } from "../api/clinicForms";
 export default function MyForms(){
@@ -31,9 +31,9 @@ export default function MyForms(){
     const handleHideEI=()=>{
         setShowClinic(false);
     }
-    useEffect(()=>{
-      fetchForms();
-     },[])
+    // useEffect(()=>{
+    //   fetchForms();
+    //  },[])
     //const {id} = useParams();
     return(
     

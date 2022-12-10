@@ -42,7 +42,7 @@ export default function App(){
        //<Home/> 
        //<EIForm/>
        //<MyForms/>
-       <Provider store={store}>
+     
         <Router>
         
         <Navbar/>
@@ -87,6 +87,6 @@ export default function App(){
         </Switch>
         </div>
         </Router>
-        </Provider>
+       
     )
 }
